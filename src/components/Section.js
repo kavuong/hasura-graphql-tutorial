@@ -1,8 +1,11 @@
 import React, { useState } from "react";
+import { useQuery } from "@apollo/client";
 import { Grid, Typography, Container, IconButton } from "@material-ui/core";
 import { makeStyles } from "@material-ui/styles";
 import IndivCard from "./IndivCard";
 import EditOutlinedIcon from "@material-ui/icons/EditOutlined";
+
+import { ORG_QUERY } from "../graphql/queries";
 
 const useStyles = makeStyles({
   icon: {
@@ -17,8 +20,12 @@ const useStyles = makeStyles({
 });
 
 export default function Section(props) {
+  const { loading, error, data } = useQuery(ORG_QUERY);
   const classes = useStyles();
   const [editing, setEditing] = useState(false);
+
+  if (loading) return <p>Loading...</p>;
+  if (error) return <p>Error</p>;
 
   return (
     <Container>
@@ -31,36 +38,17 @@ export default function Section(props) {
         </IconButton>
       </div>
       <Grid container direction="row" justify="space-around">
-        <IndivCard
-          image={require("../assets/blm.jfif")}
-          title="Black Lives Matter"
-          involvement="Volunteer"
-          editing={editing}
-        />
-        <IndivCard
-          image={require("../assets/unicef.jpg")}
-          title="UNICEF"
-          involvement="Director"
-          editing={editing}
-        />
-        <IndivCard
-          image={require("../assets/MSF.webp")}
-          title="Doctors Without Borders"
-          involvement="Nurse"
-          editing={editing}
-        />
-        <IndivCard
-          image={require("../assets/aaa.png")}
-          title="Asian-American Association"
-          involvement="Event Organizer"
-          editing={editing}
-        />
-        <IndivCard
-          image={require("../assets/ucd_mental.jpeg")}
-          title="UC Davis Mental Health Initiative"
-          involvement="Speaker"
-          editing={editing}
-        />
+        {data.organizations.map((org, index) => {
+          const url = org.picture_url;
+          return (
+            <IndivCard
+              image={require(`../assets/${org.picture_url}`)}
+              title={org.name}
+              involvement={org.involvement}
+              editing={editing}
+            />
+          );
+        })}
       </Grid>
     </Container>
   );

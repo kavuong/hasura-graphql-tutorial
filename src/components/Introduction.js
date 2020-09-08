@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useQuery } from "@apollo/client";
 import {
   Grid,
   Typography,
@@ -10,6 +11,8 @@ import { makeStyles } from "@material-ui/styles";
 
 import ShareIcon from "@material-ui/icons/ShareRounded";
 import EditOutlinedIcon from "@material-ui/icons/EditOutlined";
+
+import { INTRO_QUERY } from "../graphql/queries";
 
 const useStyles = makeStyles({
   start: {
@@ -28,11 +31,17 @@ const useStyles = makeStyles({
 });
 
 export default function Introduction(props) {
+  const { loading, error, data } = useQuery(INTRO_QUERY);
   const classes = useStyles();
 
   const [editing, setEditing] = useState(false);
   const [name, setName] = useState(props.name);
   const [description, setDescription] = useState(props.description);
+
+  if (loading) return <p>Loading...</p>;
+  if (error) return <p>Error</p>;
+
+  console.log(data);
 
   return (
     <Container>
@@ -42,19 +51,19 @@ export default function Introduction(props) {
             {editing ? (
               <Input
                 onChange={(e) => setName(e.target.value)}
-                value={name}
+                value={data.person[0].name}
               ></Input>
             ) : (
-              <Typography variant="h4">{name}</Typography>
+              <Typography variant="h4">{data.person[0].name}</Typography>
             )}
 
             {editing ? (
               <Input
                 onChange={(e) => setDescription(e.target.value)}
-                value={description}
+                value={data.person[0].biography}
               ></Input>
             ) : (
-              <Typography variant="h5">{description}</Typography>
+              <Typography variant="h5">{data.person[0].biography}</Typography>
             )}
             <div>
               <IconButton>

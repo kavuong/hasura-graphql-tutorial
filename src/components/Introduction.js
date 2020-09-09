@@ -39,6 +39,8 @@ export default function Introduction(props) {
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
 
+  const [oldName, setOldName] = useState("");
+
   // needed to ensure useEffect is not triggered on initial render
   const didMountRef = useRef(false);
 
@@ -52,9 +54,15 @@ export default function Introduction(props) {
   useEffect(() => {
     // if we are not in editing state and the name is not null
     if (!editing && didMountRef.current) {
-      console.log(name);
-      editIntro({ variables: { biography: description, name: name } });
+      console.log(oldName);
+      editIntro({
+        variables: { biography: description, name: name, oldName: oldName },
+      });
     } else {
+      // when editing state is triggered, current name value is kept in oldName variable, in order for the GraphQL query to find the proper name to edit
+      if (editing) {
+        setOldName(name);
+      }
       didMountRef.current = true;
     }
   }, [editing]);
@@ -82,7 +90,7 @@ export default function Introduction(props) {
                 value={description}
               ></Input>
             ) : (
-              <Typography variant="h5">{data.person[0].biography}</Typography>
+              <Typography variant="h5">{description}</Typography>
             )}
             <div>
               <IconButton>

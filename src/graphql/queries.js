@@ -18,3 +18,17 @@ export const ORG_QUERY = gql`
     }
   }
 `;
+
+export const MUTATE_QUERY = gql`
+  mutation($biography: String, $name: String) {
+    update_person(
+      where: { name: { _eq: "James Do" } }
+      _set: { biography: $biography, name: $name }
+    ) {
+      returning {
+        name
+        biography
+      }
+    }
+  }
+`;

@@ -15,12 +15,6 @@ export default function MainContainer() {
       <Introduction name="J Do" description={DESCRIPTION_TEXT} />
 
       <Section title="Organizations" />
-
-      <Container style={{ marginTop: 20 }}>
-        <Grid container direction="row" justify="space-around">
-          <Button variant="contained">Submit</Button>
-        </Grid>
-      </Container>
     </Container>
   );
 }

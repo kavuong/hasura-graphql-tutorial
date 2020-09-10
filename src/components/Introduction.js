@@ -15,7 +15,7 @@ import EditOutlinedIcon from "@material-ui/icons/EditOutlined";
 import {
   INTRO_QUERY,
   MUTATE_QUERY,
-  ORG_SUBSCRIPTION,
+  PERSON_SUBSCRIPTION,
 } from "../graphql/queries";
 
 const useStyles = makeStyles({
@@ -35,7 +35,7 @@ const useStyles = makeStyles({
 });
 
 export default function Introduction(props) {
-  const { loading, error, data } = useSubscription(ORG_SUBSCRIPTION);
+  const { loading, error, data } = useSubscription(PERSON_SUBSCRIPTION);
   const [editIntro] = useMutation(MUTATE_QUERY);
   const classes = useStyles();
 

@@ -5,7 +5,7 @@ import { makeStyles } from "@material-ui/styles";
 import IndivCard from "./IndivCard";
 import EditOutlinedIcon from "@material-ui/icons/EditOutlined";
 
-import { ORG_QUERY, ORG_SUBSCRIPTION } from "../graphql/queries";
+import { ORG_QUERY, PERSON_SUBSCRIPTION } from "../graphql/queries";
 
 const useStyles = makeStyles({
   icon: {

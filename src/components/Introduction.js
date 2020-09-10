@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
-import { useQuery, useMutation } from "@apollo/client";
+import { useQuery, useMutation, useSubscription } from "@apollo/client";
 import {
   Grid,
   Typography,
@@ -12,7 +12,11 @@ import { makeStyles } from "@material-ui/styles";
 import ShareIcon from "@material-ui/icons/ShareRounded";
 import EditOutlinedIcon from "@material-ui/icons/EditOutlined";
 
-import { INTRO_QUERY, MUTATE_QUERY } from "../graphql/queries";
+import {
+  INTRO_QUERY,
+  MUTATE_QUERY,
+  ORG_SUBSCRIPTION,
+} from "../graphql/queries";
 
 const useStyles = makeStyles({
   start: {
@@ -31,7 +35,7 @@ const useStyles = makeStyles({
 });
 
 export default function Introduction(props) {
-  const { loading, error, data } = useQuery(INTRO_QUERY);
+  const { loading, error, data } = useSubscription(ORG_SUBSCRIPTION);
   const [editIntro] = useMutation(MUTATE_QUERY);
   const classes = useStyles();
 

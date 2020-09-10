@@ -32,3 +32,12 @@ export const MUTATE_QUERY = gql`
     }
   }
 `;
+
+export const ORG_SUBSCRIPTION = gql`
+  subscription {
+    person {
+      name
+      biography
+    }
+  }
+`;

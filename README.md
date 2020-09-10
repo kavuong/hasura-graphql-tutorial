@@ -7,7 +7,6 @@ Welcome! This is the "Building a Codeless Backend with Hasura and GraphQL" works
 There are three stages to the code tutorial, each placed in its own Git branch.
 
 - step-0-start: Our React / MaterialUI Frontend, not linked to Hasura yet
-  - Skill Focus: MaterialUI Intro
 - step-1-query: Displaying backend data using queries
   - Skill Focus: Queries in GraphQL + Hasura
 - step-2-mutation: Changing backend data using mutations

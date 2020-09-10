@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useQuery, useSubscription } from "@apollo/client";
+import { useQuery } from "@apollo/client";
 import { Grid, Typography, Container, IconButton } from "@material-ui/core";
 import { makeStyles } from "@material-ui/styles";
 import IndivCard from "./IndivCard";

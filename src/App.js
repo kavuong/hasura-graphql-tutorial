@@ -9,10 +9,11 @@ import {
 } from "@apollo/client";
 import { getMainDefinition } from "@apollo/client/utilities";
 import { WebSocketLink } from "@apollo/link-ws";
-import { Grid } from "@material-ui/core";
+import { Grid, Container } from "@material-ui/core";
 import { createMuiTheme, MuiThemeProvider } from "@material-ui/core/styles";
 
-import MainContainer from "./components/MainContainer";
+import Introduction from "./components/Introduction";
+import Section from "./components/Section";
 
 const GRAPHQL_ENDPOINT =
   "hasura-graphql-hack-tutorial.herokuapp.com/v1/graphql";
@@ -45,6 +46,9 @@ const client = new ApolloClient({
   link: splitLink,
 });
 
+const DESCRIPTION_TEXT = `I love talking about the Asian American Experience in a medical lens.
+ Let's connect!`;
+
 function App() {
   const theme = createMuiTheme({
     typography: {
@@ -71,7 +75,11 @@ function App() {
           ></link>
           <MuiThemeProvider theme={theme}>
             <Grid container justify="center" alignItems="center">
-              <MainContainer />
+              <Container>
+                <Introduction name="J Do" description={DESCRIPTION_TEXT} />
+
+                <Section title="Organizations" />
+              </Container>
             </Grid>
           </MuiThemeProvider>
         </header>

@@ -33,7 +33,7 @@ export const MUTATE_QUERY = gql`
   }
 `;
 
-export const ORG_SUBSCRIPTION = gql`
+export const PERSON_SUBSCRIPTION = gql`
   subscription {
     person {
       name

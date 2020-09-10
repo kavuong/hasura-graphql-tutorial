@@ -1,23 +1,19 @@
-# Intro to React Workshop
+# Intro to Hasura Workshop
 
-Welcome! This is the intro to React.js workshop, presented by Kevin Vuong.
-
-Here is the final result:
-
-![https://dawn-advocacy.s3-us-west-1.amazonaws.com/sample-images/react-tutorial-hackathon.png](https://dawn-advocacy.s3-us-west-1.amazonaws.com/sample-images/react-tutorial-hackathon.png)
+Welcome! This is the "Building a Codeless Backend with Hasura and GraphQL" workshop, presented by Kevin Vuong.
 
 ## Tutorial Breakdown
 
 There are three stages to the code tutorial, each placed in its own Git branch.
 
-- step-1-introduction-layout: layout of Introduction section
+- step-0-start: Our React / MaterialUI Frontend, not linked to Hasura yet
   - Skill Focus: MaterialUI Intro
-- step-2-organization-layout: layout of Organizations section
-  - Skill Focus: Refactoring Code Using Reusable Components
-- step-2.5-styling: finalizing styling of the UI
-  - Skill Focus: styling within React
-- step-3-editing-states: adding editing states to edit buttons
-  - Skill Focus: State Management in React
+- step-1-query: Displaying backend data using queries
+  - Skill Focus: Queries in GraphQL + Hasura
+- step-2-mutation: Changing backend data using mutations
+  - Skill Focus: Mutations in GraphQL + Hasura
+- step-3-subscription: Keeping frontend constantly synchronized with backend using subscriptions
+  - Skill Focus: Subscriptions in GraphQL + Hasura
 
 ## Startup
 
@@ -25,5 +21,4 @@ There are three stages to the code tutorial, each placed in its own Git branch.
 
 This workshop has been presented at:
 
-- Spectra 4.0 (Sat, August 8, 2020)
-- Hack For The People (Fri, August 21, 2020)
+- PennApps XXI (Friday, Sept 11, 2020)
